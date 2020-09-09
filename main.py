@@ -12,7 +12,7 @@ soup = BeautifulSoup(r,"html.parser")
 alldata = soup.find_all("tbody", attrs={"data-reactid": "50"})
 print (alldata)
 
-myDict = {}
+# myDict = {}
 df = pd.DataFrame(columns=['Date', 'Open Value'])
 
 count = 0
@@ -23,5 +23,6 @@ for i in alldata[0].find_all("tr"):
     # myDict[auxTable[0].text] = auxTable[1].text
     df.loc[count] = [auxTable[0].text, auxTable[1].text]
     count +=1
-print(myDict)
+# print(myDict)
 print(df)
+
