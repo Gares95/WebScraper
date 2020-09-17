@@ -20,8 +20,8 @@ def give_me_trend():
     auxBlocks = top5.find_all("li")
     TrendingUrl = {}
     for block in auxBlocks:
-        auxBlocksA = block.find_all("a", attrs={"class": "Fz(s) Ell Fw(600) C($linkColor)"})
-        TrendingUrl[auxBlocksA[0].text] = baseUrl + auxBlocksA[0].get('href')
+        auxBlocksA = block.find_all("a", attrs={"class": "Fz(s) Ell Fw(600) C($linkColor)"})    
+        TrendingUrl[auxBlocksA[0].text] = baseUrl + "/history".join(auxBlocksA[0].get('href').split("?"))  
     
     df = pd.DataFrame(list(TrendingUrl.items()), columns = ['column1', 'column2'])
     return df
