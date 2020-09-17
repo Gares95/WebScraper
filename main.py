@@ -17,6 +17,8 @@ r = requests.get(url).text
 soup = BeautifulSoup(r,"html.parser")
 alldata = soup.find_all("tbody", attrs={"data-reactid": "50"})
 print (alldata)
+CompName = soup.find("h1", attrs={"class": "D(ib) Fz(18px)"})
+
 
 df = pd.DataFrame(columns=['Date', 'Close Value'])
 # Close Value
@@ -34,12 +36,14 @@ df2.iloc[:,0] = date_conversion(df2)
 (ggplot(df2)          # defining what data to use
  + aes(x='Date', y = 'Close Value')# defining what variable to use
  + geom_point() # defining the type of plot to use
+ + ggtitle(CompName.text)
  + theme(axis_text_x  = element_text(angle = 90, hjust = 1))
 )
 
 (ggplot(df2)          # defining what data to use
  + aes(x='Date', y = 'Close Value')# defining what variable to use
  + geom_path() # defining the type of plot to use
+ + title("Hi There")
  + ylim (2, 2.4)
  + xlim (fst, scd)
  # + scale_y_log10()T
