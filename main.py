@@ -18,62 +18,6 @@ soup = BeautifulSoup(r,"html.parser")
 alldata = soup.find_all("tbody", attrs={"data-reactid": "50"})
 print (alldata)
 
-# =============================================================================
-# df = pd.DataFrame(columns=['Date', 'Open Value'])
-# # Open Value
-# count = 0
-# for i in alldata[0].find_all("tr"):
-#     auxTable = i.find_all("td")
-#     # Because each parameter for this specific webpage 
-#     # contains only one value we can use the indexes 0 and 1 only
-#     df.loc[count] = [auxTable[0].text, auxTable[1].text]
-#     count +=1
-# =============================================================================
-
-
-df = pd.DataFrame(columns=['Date', 'High Value'])
-# High Value
-count = 0
-for i in alldata[0].find_all("tr"):
-    auxTable = i.find_all("td")
-    # Because each parameter for this specific webpage 
-    # contains only one value we can use the indexes 0 and 1 only
-    df.loc[count] = [auxTable[0].text, auxTable[2].text]
-    count +=1
-    
-print(df)
-# print(df.iloc[:,1])
-# print(type(float(df.iloc[:,1][0])))
-
-df2 = df
-# df2 = df.copy()
-df2.iloc[:,1] = pd.to_numeric(df2.iloc[:,1], downcast="float")
-df2.iloc[:,0] = date_conversion(df2)
-(ggplot(df2)          # defining what data to use
- + aes(x='Date', y = 'High Value')# defining what variable to use
- + geom_point() # defining the type of plot to use
- + theme(axis_text_x  = element_text(angle = 90, hjust = 1))
-)
-# fst = datetime.strptime("2020-09-10", '%Y-%m-%d')
-# fst = fst.timestamp()
-# fst = pd._libs.tslibs.timestamps.Timestamp("2020-08-19")
-# scd = datetime.strptime("2020-09-01", '%Y-%m-%d')
-# scd = scd.timestamp()
-# scd = pd._libs.tslibs.timestamps.Timestamp("2020-09-16")
-
-fst = pd._libs.tslibs.timestamps.Timestamp("2020-08-19")
-scd = pd._libs.tslibs.timestamps.Timestamp("2020-09-16")
-
-(ggplot(df2)          # defining what data to use
- + aes(x='Date', y = 'High Value')# defining what variable to use
- + geom_line() # defining the type of plot to use
- + ylim (2, 2.4)
- + xlim (fst, scd)
- # + scale_y_log10()
- + theme(axis_text_x  = element_text(angle = 90, hjust = 1))
-)
-
-
 df = pd.DataFrame(columns=['Date', 'Close Value'])
 # Close Value
 count = 0
