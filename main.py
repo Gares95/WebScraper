@@ -11,14 +11,18 @@ from plotnine import *
 from give_me_trend import give_me_trend
 from date_conversion import date_conversion
 
+
+trends = give_me_trend()
+url = trends.iloc[0,1]
+
 #url = 'https://api.scrapingdog.com/scrape?api_key=5ea541dcacf6581b0b4b4042&url=https://finance.yahoo.com/quote/AMZN?p=AMZN&.tsrc=fin-srch'
-url = 'https://finance.yahoo.com/quote/SAN/history?p=SAN'
+#url = 'https://finance.yahoo.com/quote/SAN/history?p=SAN'
 r = requests.get(url).text
 soup = BeautifulSoup(r,"html.parser")
+# alldata = soup.find_all("tbody")
 alldata = soup.find_all("tbody", attrs={"data-reactid": "50"})
 print (alldata)
 CompName = soup.find("h1", attrs={"class": "D(ib) Fz(18px)"})
-trends = give_me_trend()
 
 df = pd.DataFrame(columns=['Date', 'Close Value'])
 # Close Value
@@ -31,6 +35,8 @@ for i in alldata[0].find_all("tr"):
     count +=1
 
 #df2 = df.copy()
+df.iloc[:,1] = df.iloc[:,1].str.replace(',','')
+df.iloc[:,1] = df.iloc[:,1].str.replace('-','') # Remove empty data
 df.iloc[:,1] = pd.to_numeric(df.iloc[:,1], downcast="float")
 df.iloc[:,0] = date_conversion(df)
 ggplot(df) + \
