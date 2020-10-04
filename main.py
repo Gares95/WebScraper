@@ -21,13 +21,13 @@ ggplot(top3Table) + \
     geom_path() + \
     ggtitle("Close value")
     
-df2 = top3Table
-df3 = pd.melt(df2, id_vars = 'Date', value_vars=[top3Table.columns[1], top3Table.columns[2], top3Table.columns[3]])
-df3
 
-ggplot(df3) + \
+top3TableM = pd.melt(top3Table, id_vars = 'Date', value_vars=[top3Table.columns[1], top3Table.columns[2], top3Table.columns[3]])
+top3TableM
+
+ggplot(top3TableM) + \
     aes(x='Date') + \
-    geom_line(aes(y=df3.value, color=df3.variable)) + \
+    geom_line(aes(y=top3TableM.value, color=top3TableM.variable)) + \
     ggtitle("Close value")
 
 # ===================adjusting axis============================================
