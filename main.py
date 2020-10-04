@@ -17,28 +17,18 @@ urls = trends.iloc[:,1]
 top3Table = give_me_top3data(urls)
 
 ggplot(top3Table) + \
-    aes(x='Date') + \
-    geom_line(aes(y=top3Table.columns[1]), color='blue') + \
-    geom_line(aes(y=top3Table.columns[2]), color='red') + \
-    geom_line(aes(y=top3Table.columns[3]), color='green') + \
-    ggtitle("Close value") + \
-    theme(axis_text_x  = element_text(angle = 90, hjust = 1))
+    aes(x='Date', y = top3Table.columns[1]) + \
+    geom_path() + \
+    ggtitle("Close value")
     
-# =============================================================================
-# ggplot(df) + \
-#     aes(x='Date', y = df.columns[1]) + \
-#     geom_path() + \
-#     ggtitle("Close value") + \
-#     theme(axis_text_x  = element_text(angle = 90, hjust = 1))
-# =============================================================================
+df2 = top3Table
+df3 = pd.melt(df2, id_vars = 'Date', value_vars=[top3Table.columns[1], top3Table.columns[2], top3Table.columns[3]])
+df3
 
-# =============================================================================
-# ggplot(df) + \
-#     aes(x='Date', y = 'Close Value') + \
-#     geom_path() + \
-#     ggtitle(CompName.text) + \
-#     theme(axis_text_x  = element_text(angle = 90, hjust = 1))
-# =============================================================================
+ggplot(df3) + \
+    aes(x='Date') + \
+    geom_line(aes(y=df3.value, color=df3.variable)) + \
+    ggtitle("Close value")
 
 # ===================adjusting axis============================================
 # ggplot(df) + \
