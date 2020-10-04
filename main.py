@@ -18,12 +18,12 @@ top3Table = give_me_top3data(urls)
 
 ggplot(top3Table) + \
     aes(x='Date') + \
-    geom_line(aes(y=df.columns[1]), color='blue') + \
-    geom_line(aes(y=df.columns[2]), color='red') + \
-    geom_line(aes(y=df.columns[3]), color='green') + \
+    geom_line(aes(y=top3Table.columns[1]), color='blue') + \
+    geom_line(aes(y=top3Table.columns[2]), color='red') + \
+    geom_line(aes(y=top3Table.columns[3]), color='green') + \
     ggtitle("Close value") + \
     theme(axis_text_x  = element_text(angle = 90, hjust = 1))
-
+    
 # =============================================================================
 # ggplot(df) + \
 #     aes(x='Date', y = df.columns[1]) + \
