@@ -2,7 +2,9 @@
 """
 Created on Wed Sep  9 23:52:59 2020
 
-@author: guill
+@author: Gares95
+
+This function converts in one line the dates of the dataframe as datetime.
 """
 
 from datetime import datetime

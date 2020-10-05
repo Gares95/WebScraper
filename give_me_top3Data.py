@@ -2,7 +2,11 @@
 """
 Created on Thu Sep 17 14:47:03 2020
 
-@author: guill
+@author: Gares95
+
+This function returns a Dataframe that contains the close values of the top 3
+trending stock market indexes in yahoo finance's main page.
+
 """
 
 from bs4 import BeautifulSoup

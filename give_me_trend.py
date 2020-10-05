@@ -2,9 +2,9 @@
 """
 Created on Wed Sep  9 18:15:28 2020
 
-@author: guill
+@author: Gares95
 
-This function returns top 3 trending companies from yahoo finance
+This function returns top 3 trending stock market indexes from yahoo finance and their urls
 """
 from bs4 import BeautifulSoup
 import requests
