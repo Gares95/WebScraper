@@ -50,4 +50,5 @@ def give_me_top3data(listOfUrls):
         df.iloc[:,c+1] = pd.to_numeric(df.iloc[:,c+1], downcast="float")  
         
     df.iloc[:,0] = date_conversion(df)
+    # df = pd.melt(df, id_vars = 'Date', value_vars=[df.columns[1], df.columns[2], df.columns[3]])
     return df

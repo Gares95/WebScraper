@@ -9,7 +9,6 @@ import pandas as pd
 from plotnine import *
 
 from give_me_trend import give_me_trend
-# from date_conversion import date_conversion
 from give_me_top3Data import give_me_top3data
 
 trends = give_me_trend()
@@ -19,9 +18,9 @@ top3Table = give_me_top3data(urls)
 top3TableM = pd.melt(top3Table, id_vars = 'Date', value_vars=[top3Table.columns[1], top3Table.columns[2], top3Table.columns[3]])
 top3TableM
 
-top1 = top3TableM[top3TableM['variable']==top3Table.columns[1]]
-top2 = top3TableM[top3TableM['variable']==top3Table.columns[2]]
-top3 = top3TableM[top3TableM['variable']==top3Table.columns[3]]
+top1 = top3TableM[top3TableM['variable']==top3Table.columns[1]].reset_index()
+top2 = top3TableM[top3TableM['variable']==top3Table.columns[2]].reset_index()
+top3 = top3TableM[top3TableM['variable']==top3Table.columns[3]].reset_index()
     
 ggplot(top1) + \
     aes(x='Date', y = 'value') + \
