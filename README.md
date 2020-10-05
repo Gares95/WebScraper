@@ -6,7 +6,7 @@ The program will obtain from _Yahoo Finance's_ main page the last *closing value
 This will return a dataframe with all the data and will display it in different plots.
 
 The object of this repository is to serve as a codebase to develop future projects.
-An interface for this program is being developed in another repository: 
+An interface for this program is being developed in another repository: https://github.com/Gares95/WebScraperYF-Interface
 
  Library that the program uses:
  - bs4
