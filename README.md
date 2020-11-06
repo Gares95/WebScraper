@@ -7,8 +7,6 @@ This will return a dataframe with all the data and will display it in different 
 
 The aim of this project is not to provide a tool to extract useful information from _yahoo finances_ specifically (there are programs very efficient for that: https://github.com/ranaroussi/yfinance), instead this repository is going to explore the functions of the libraries _bs4_ and _request_ and how to use them to present the results.
 
-The object of this repository is to serve as a codebase to develop future projects.
-An interface for this program is being developed in another repository: https://github.com/Gares95/WebScraperYF-Interface
 
  Library that the program uses:
  - bs4
